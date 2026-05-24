@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPMB Jakarta 2025/2026 - Sistem Penerimaan Murid Baru</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --jakarta-blue: #003580;
+    --jakarta-red: #C8102E;
+    --jakarta-gold: #F5A623;
+    --accent-teal: #00897B;
+    --light-bg: #F0F4FA;
+    --card-bg: #FFFFFF;
+    --text-dark: #1A1A2E;
+    --text-mid: #4A5568;
+    --text-light: #718096;
+    --border: #E2E8F0;
+    --success: #2E7D32;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #F7F9FC;
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--jakarta-blue);
+    color: white;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 3px solid var(--jakarta-red);
+  }
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 16px; }
+  .topbar a:hover { color: white; }
+
+  /* HEADER */
+  header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,53,128,0.08);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .logo-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--jakarta-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-icon svg { width: 32px; height: 32px; }
+  .logo-text h1 {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--jakarta-blue);
+    line-height: 1.2;
+  }
+  .logo-text p {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  nav { display: flex; gap: 4px; }
+  nav a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  nav a:hover { background: var(--light-bg); color: var(--jakarta-blue); }
+  nav a.active { background: var(--jakarta-blue); color: white; }
+  .btn-login {
+    background: var(--jakarta-red);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-login:hover { background: #a50d24; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #003580 0%, #0052B4 50%, #0070E0 100%);
+    color: white;
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #FFD700;
+  }
+  .hero h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .hero h2 em { font-style: italic; color: #FFD700; }
+  .hero p {
+    font-size: 16px;
+    opacity: 0.85;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--jakarta-red);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(200,16,46,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(200,16,46,0.5); }
+  .btn-outline-white {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.4);
+    padding: 12px 26px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  /* HERO STATS CARD */
+  .hero-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 32px;
+  }
+  .hero-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 13px;
+  }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 16px;
+  }
+  .stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FFD700;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    opacity: 0.75;
+    font-weight: 500;
+  }
+  .countdown-box {
+    background: var(--jakarta-red);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .countdown-box p { font-size: 12px; opacity: 0.85; margin-bottom: 8px; }
+  .countdown-time {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .countdown-unit {
+    background: rgba(0,0,0,0.2);
+    border-radius: 8px;
+    padding: 8px 10px;
+    min-width: 52px;
+    text-align: center;
+  }
+  .countdown-num {
+    font-size: 22px;
+    font-weight: 800;
+    display: block;
+    line-height: 1;
+  }
+  .countdown-label { font-size: 10px; opacity: 0.7; }
+
+  /* ALERT BANNER */
+  .alert-banner {
+    background: #FFF8E1;
+    border-bottom: 3px solid var(--jakarta-gold);
+  }
+  .alert-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .alert-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--jakarta-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .alert-inner strong { color: var(--jakarta-red); }
+
+  /* SECTIONS */
+  section { padding: 64px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .section-tag {
+    display: inline-block;
+    background: rgba(0,53,128,0.08);
+    color: var(--jakarta-blue);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+  }
+  .section-header p { font-size: 16px; color: var(--text-mid); max-width: 560px; margin: 0 auto; }
+
+  /* JALUR CARDS */
+  .jalur-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .jalur-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .jalur-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .jalur-card.domisili::before { background: var(--jakarta-blue); }
+  .jalur-card.afirmasi::before { background: var(--accent-teal); }
+  .jalur-card.prestasi::before { background: var(--jakarta-gold); }
+  .jalur-card.mutasi::before { background: var(--jakarta-red); }
+  .jalur-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,53,128,0.12);
+    border-color: var(--jakarta-blue);
+  }
+  .jalur-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+  .jalur-card.domisili .jalur-icon { background: rgba(0,53,128,0.1); }
+  .jalur-card.afirmasi .jalur-icon { background: rgba(0,137,123,0.1); }
+  .jalur-card.prestasi .jalur-icon { background: rgba(245,166,35,0.15); }
+  .jalur-card.mutasi .jalur-icon { background: rgba(200,16,46,0.08); }
+  .jalur-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--text-dark); }
+  .jalur-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; }
+  .jalur-quota {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 100px;
+  }
+  .domisili .jalur-quota { background: rgba(0,53,128,0.08); color: var(--jakarta-blue); }
+  .afirmasi .jalur-quota { background: rgba(0,137,123,0.1); color: var(--accent-teal); }
+  .prestasi .jalur-quota { background: rgba(245,166,35,0.15); color: #B7850A; }
+  .mutasi .jalur-quota { background: rgba(200,16,46,0.08); color: var(--jakarta-red); }
+
+  /* TIMELINE */
+  .timeline-bg { background: var(--light-bg); }
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .timeline-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 8px;
+  }
+  .timeline-dot {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--jakarta-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--jakarta-blue);
+    box-shadow: 0 2px 12px rgba(0,53,128,0.15);
+  }
+  .timeline-dot.done {
+    background: var(--jakarta-blue);
+    color: white;
+  }
+  .timeline-dot.active {
+    background: var(--jakarta-red);
+    border-color: var(--jakarta-red);
+    color: white;
+    box-shadow: 0 4px 16px rgba(200,16,46,0.4);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(200,16,46,0.4); }
+    50% { box-shadow: 0 4px 24px rgba(200,16,46,0.7); }
+  }
+  .timeline-item h4 { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+  .timeline-item p { font-size: 12px; color: var(--text-light); }
+  .timeline-item .tgl {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--jakarta-blue);
+    background: rgba(0,53,128,0.08);
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+    display: inline-block;
+  }
+  .timeline-item.active-step .tgl {
+    background: rgba(200,16,46,0.08);
+    color: var(--jakarta-red);
+  }
+
+  /* JENJANG TABS */
+  .jenjang-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .jenjang-tab {
+    padding: 10px 24px;
+    border-radius: 100px;
+    border: 2px solid var(--border);
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: var(--text-mid);
+  }
+  .jenjang-tab:hover { border-color: var(--jakarta-blue); color: var(--jakarta-blue); }
+  .jenjang-tab.active { background: var(--jakarta-blue); color: white; border-color: var(--jakarta-blue); }
+  .jenjang-content { display: none; }
+  .jenjang-content.active { display: block; }
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .info-table th {
+    background: var(--jakarta-blue);
+    color: white;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+  }
+  .info-table td {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-mid);
+  }
+  .info-table tr:last-child td { border-bottom: none; }
+  .info-table tr:nth-child(even) td { background: #F8FAFF; }
+  .info-table .highlight { color: var(--jakarta-blue); font-weight: 600; }
+  .info-table .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .badge-blue { background: rgba(0,53,128,0.1); color: var(--jakarta-blue); }
+  .badge-teal { background: rgba(0,137,123,0.1); color: var(--accent-teal); }
+  .badge-gold { background: rgba(245,166,35,0.15); color: #B7850A; }
+  .badge-red { background: rgba(200,16,46,0.08); color: var(--jakarta-red); }
+
+  /* PANDUAN DAFTAR */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .step-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: all 0.3s;
+  }
+  .step-card:hover { border-color: var(--jakarta-blue); box-shadow: 0 8px 24px rgba(0,53,128,0.08); }
+  .step-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--jakarta-blue);
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .step-content p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+  .step-content ul { font-size: 13px; color: var(--text-mid); padding-left: 16px; margin-top: 6px; }
+  .step-content li { margin-bottom: 4px; }
+
+  /* PENGUMUMAN */
+  .news-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+  }
+  .news-main {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .news-header {
+    background: var(--jakarta-blue);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .news-header h3 { font-size: 16px; font-weight: 700; }
+  .news-header a { color: rgba(255,255,255,0.8); font-size: 13px; text-decoration: none; }
+  .news-item {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-item:hover { background: #F8FAFF; }
+  .news-date {
+    min-width: 52px;
+    text-align: center;
+    background: var(--light-bg);
+    border-radius: 10px;
+    padding: 8px;
+  }
+  .news-date .d { font-size: 20px; font-weight: 800; color: var(--jakarta-blue); line-height: 1; }
+  .news-date .m { font-size: 11px; color: var(--text-light); font-weight: 600; }
+  .news-title { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 4px; line-height: 1.4; }
+  .news-meta { font-size: 12px; color: var(--text-light); }
+  .news-type {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .type-info { background: rgba(0,53,128,0.08); color: var(--jakarta-blue); }
+  .type-penting { background: rgba(200,16,46,0.08); color: var(--jakarta-red); }
+
+  .news-sidebar { display: flex; flex-direction: column; gap: 16px; }
+  .sidebar-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .sidebar-card-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sidebar-card-body { padding: 16px 20px; }
+  .quick-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+  .quick-link:last-child { border-bottom: none; padding-bottom: 0; }
+  .quick-link:hover { color: var(--jakarta-blue); }
+  .quick-link .icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* FAQ */
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .faq-question {
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    transition: background 0.2s;
+  }
+  .faq-question:hover { background: var(--light-bg); }
+  .faq-question.open { color: var(--jakarta-blue); }
+  .faq-toggle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--light-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    transition: transform 0.3s, background 0.2s;
+    font-weight: 300;
+  }
+  .faq-question.open .faq-toggle {
+    transform: rotate(45deg);
+    background: var(--jakarta-blue);
+    color: white;
+  }
+  .faq-answer {
+    padding: 0 24px;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.7;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s;
+  }
+  .faq-answer.open {
+    max-height: 200px;
+    padding: 0 24px 18px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: linear-gradient(135deg, #003580, #0052B4);
+    color: white;
+    text-align: center;
+    padding: 80px 24px;
+  }
+  .cta-section h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+  .cta-section p { font-size: 17px; opacity: 0.85; margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    background: #0A1628;
+    color: rgba(255,255,255,0.7);
+    padding: 48px 24px 24px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand h3 {
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .footer-brand p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .footer-links h4 {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .footer-links a {
+    display: block;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: white; }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    font-size: 12px;
+    opacity: 0.5;
+  }
+  .dinas-logos {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .dinas-logo-item {
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .jalur-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: 1fr; }
+    .timeline { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .timeline::before { display: none; }
+    .news-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .hero h2 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>🏛️ Pemerintah Provinsi DKI Jakarta — Dinas Pendidikan</span>
+    <div>
+      <a href="#">Hubungi Kami</a>
+      <a href="#">Bantuan</a>
+      <a href="#">EN</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo-area">
+      <div class="logo-icon">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 3L4 10v5h2v12h4v-8h4v8h4v-8h4v8h4V15h2v-5L16 3z" fill="white"/>
+          <circle cx="16" cy="8" r="2" fill="#FFD700"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <h1>SPMB Jakarta</h1>
+        <p>Sistem Penerimaan Murid Baru • Tahun Ajaran 2025/2026</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#" class="active">Beranda</a>
+      <a href="#jalur">Jalur Masuk</a>
+      <a href="#jadwal">Jadwal</a>
+      <a href="#panduan">Panduan</a>
+      <a href="#pengumuman">Pengumuman</a>
+    </nav>
+    <a href="#" class="btn-login">🔐 Masuk / Daftar</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">📅 Pendaftaran Dibuka • Tahun Ajaran 2025/2026</div>
+      <h2>Selamat Datang di <em>SPMB</em> DKI Jakarta</h2>
+      <p>Sistem Penerimaan Murid Baru Provinsi DKI Jakarta — transparan, adil, dan bebas pungutan. Daftarkan anak Anda ke jenjang PAUD, SD, SMP, SMA, dan SMK terbaik di Jakarta.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">📝 Daftar Sekarang</a>
+        <a href="#panduan" class="btn-outline-white">📖 Panduan Pendaftaran</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📊 Statistik SPMB 2025/2026</h3>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-number">142K+</div>
+          <div class="stat-label">Pendaftar Aktif</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1.847</div>
+          <div class="stat-label">Sekolah Negeri</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98.3%</div>
+          <div class="stat-label">Terverifikasi</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Jalur Penerimaan</div>
+        </div>
+      </div>
+      <div class="countdown-box">
+        <p>⏳ Penutupan Pendaftaran</p>
+        <div class="countdown-time">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-d">12</span>
+            <span class="countdown-label">Hari</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-h">07</span>
+            <span class="countdown-label">Jam</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-m">34</span>
+            <span class="countdown-label">Menit</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-s">18</span>
+            <span class="countdown-label">Detik</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERT -->
+<div class="alert-banner">
+  <div class="alert-inner">
+    <div class="alert-icon">⚠️</div>
+    <div>
+      <strong>Perhatian:</strong> SPMB 2025/2026 adalah sistem <strong>GRATIS</strong> tanpa pungutan apapun. Waspadai penipuan yang mengatasnamakan panitia SPMB. Laporkan ke Hotline: <strong>1500-164</strong>
+    </div>
+  </div>
+</div>
+
+<!-- JALUR MASUK -->
+<section id="jalur">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Jalur Penerimaan</div>
+      <h2>4 Jalur Masuk SPMB Jakarta</h2>
+      <p>Pilih jalur yang sesuai dengan kondisi dan kebutuhan calon murid baru Anda</p>
+    </div>
+    <div class="jalur-grid">
+      <div class="jalur-card domisili">
+        <div class="jalur-icon">🏠</div>
+        <h3>Jalur Domisili</h3>
+        <p>Penerimaan berdasarkan jarak tempat tinggal ke sekolah, menggantikan sistem zonasi PPDB.</p>
+        <span class="jalur-quota">📊 Kuota: 40–50%</span>
+      </div>
+      <div class="jalur-card afirmasi">
+        <div class="jalur-icon">🤝</div>
+        <h3>Jalur Afirmasi</h3>
+        <p>Untuk anak dari keluarga tidak mampu (KJP/KIP) dan penyandang disabilitas agar mendapat akses pendidikan.</p>
+        <span class="jalur-quota">📊 Kuota: 20–30%</span>
+      </div>
+      <div class="jalur-card prestasi">
+        <div class="jalur-icon">🏆</div>
+        <h3>Jalur Prestasi</h3>
+        <p>Berdasarkan nilai rapor, prestasi akademik, seni, olahraga, dan bidang lainnya yang diakui secara resmi.</p>
+        <span class="jalur-quota">📊 Kuota: 20–25%</span>
+      </div>
+      <div class="jalur-card mutasi">
+        <div class="jalur-icon">🔄</div>
+        <h3>Jalur Mutasi</h3>
+        <p>Untuk anak dari orang tua yang pindah tugas (TNI, Polri, PNS) ke wilayah DKI Jakarta.</p>
+        <span class="jalur-quota">📊 Kuota: 5–10%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JADWAL -->
+<section id="jadwal" class="timeline-bg">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Jadwal Kegiatan</div>
+      <h2>Tahapan SPMB 2025/2026</h2>
+      <p>Ikuti setiap tahapan dengan cermat agar pendaftaran berjalan lancar</p>
+    </div>
+    <div class="jenjang-tabs" style="margin-bottom: 36px;">
+      <button class="jenjang-tab active" onclick="switchTab(this, 'sd')">SD</button>
+      <button class="jenjang-tab" onclick="switchTab(this, 'smp')">SMP</button>
+      <button class="jenjang-tab" onclick="switchTab(this, 'sma')">SMA</button>
+      <button class="jenjang-tab" onclick="switchTab(this, 'smk')">SMK</button>
+    </div>
+    <div id="tab-sd" class="jenjang-content active">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Pra-Pendaftaran</h4>
+          <p>Verifikasi dokumen di Sidanira</p>
+          <div class="tgl">1–15 Mei 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Buat Akun</h4>
+          <p>Daftar & aktivasi akun SPMB</p>
+          <div class="tgl">16–19 Mei 2025</div>
+        </div>
+        <div class="timeline-item active-step">
+          <div class="timeline-dot active">3</div>
+          <h4>Pilih Sekolah</h4>
+          <p>Login dan pilih sekolah tujuan</p>
+          <div class="tgl">20 Mei–5 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <h4>Seleksi</h4>
+          <p>Proses verifikasi & seleksi</p>
+          <div class="tgl">6–9 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <h4>Pengumuman</h4>
+          <p>Hasil seleksi & daftar ulang</p>
+          <div class="tgl">10–12 Jun 2025</div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-smp" class="jenjang-content">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Pra-Pendaftaran</h4>
+          <p>Verifikasi di Sidanira</p>
+          <div class="tgl">1–10 Mei 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Pengajuan Akun</h4>
+          <p>Daftar akun SPMB online</p>
+          <div class="tgl">11–15 Mei 2025</div>
+        </div>
+        <div class="timeline-item active-step">
+          <div class="timeline-dot active">3</div>
+          <h4>Pendaftaran</h4>
+          <p>Pilih sekolah & jalur</p>
+          <div class="tgl">16 Mei–3 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <h4>Seleksi</h4>
+          <p>Proses seleksi berjalan</p>
+          <div class="tgl">4–7 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <h4>Pengumuman</h4>
+          <p>Cek hasil & daftar ulang</p>
+          <div class="tgl">8–12 Jun 2025</div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-sma" class="jenjang-content">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Pra-Pendaftaran</h4>
+          <p>Verifikasi dokumen</p>
+          <div class="tgl">1–8 Mei 2025</div>
+        </div>
+        <div class="timeline-item done">
+          <div class="timeline-dot done">✓</div>
+          <h4>Buat Akun</h4>
+          <p>Aktivasi akun & PIN</p>
+          <div class="tgl">9–14 Mei 2025</div>
+        </div>
+        <div class="timeline-item active-step">
+          <div class="timeline-dot active">3</div>
+          <h4>Pendaftaran</h4>
+          <p>Input data & pilih sekolah</p>
+          <div class="tgl">15 Mei–1 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <h4>Seleksi</h4>
+          <p>Proses seleksi otomatis</p>
+          <div class="tgl">2–5 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <h4>Pengumuman</h4>
+          <p>Hasil & daftar ulang</p>
+          <div class="tgl">6–10 Jun 2025</div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-smk" class="jenjang-content">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Pra-Pendaftaran</h4>
+          <p>Verifikasi Sidanira</p>
+          <div class="tgl">1–10 Mei 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot done">✓</div>
+          <h4>Buat Akun</h4>
+          <p>Daftar akun SPMB</p>
+          <div class="tgl">11–16 Mei 2025</div>
+        </div>
+        <div class="timeline-item active-step">
+          <div class="timeline-dot active">3</div>
+          <h4>Pendaftaran</h4>
+          <p>Pilih jurusan & sekolah</p>
+          <div class="tgl">17 Mei–4 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <h4>Seleksi</h4>
+          <p>Tes & seleksi administrasi</p>
+          <div class="tgl">5–8 Jun 2025</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <h4>Pengumuman</h4>
+          <p>Hasil & daftar ulang</p>
+          <div class="tgl">9–12 Jun 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PANDUAN -->
+<section id="panduan">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Cara Mendaftar</div>
+      <h2>Panduan Pendaftaran SPMB</h2>
+      <p>Ikuti langkah-langkah berikut untuk mendaftar SPMB Jakarta dengan mudah</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>Pra-Pendaftaran di Sidanira</h4>
+          <p>Login ke laman <strong>sidanira.jakarta.go.id</strong>, isi data, dan unggah dokumen yang diperlukan:</p>
+          <ul>
+            <li>Kartu Keluarga (KK)</li>
+            <li>Rapor 5 semester terakhir</li>
+            <li>SPTJM (Surat Pernyataan Tanggung Jawab Mutlak)</li>
+            <li>Sertifikat prestasi (jika ada)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>Tunggu Verifikasi</h4>
+          <p>Tim verifikator Dinas Pendidikan akan memproses dokumen Anda. Pastikan semua dokumen sesuai format dan jelas terbaca.</p>
+          <p style="margin-top:8px;">Cek status verifikasi secara berkala melalui akun Sidanira Anda.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>Aktivasi PIN/Token</h4>
+          <p>Setelah verifikasi disetujui, aktivasi PIN/Token yang dikirim ke nomor HP/email terdaftar untuk melanjutkan ke tahap pendaftaran.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>Buat Akun SPMB</h4>
+          <p>Kunjungi <strong>spmb.jakarta.go.id</strong> dan buat akun dengan menggunakan PIN/Token yang telah diaktivasi.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>Pilih Sekolah & Jalur</h4>
+          <p>Login dan pilih sekolah tujuan sesuai jenjang dan jalur yang diinginkan. Anda dapat memilih maksimal 3 sekolah pilihan.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>Pantau & Daftar Ulang</h4>
+          <p>Cek hasil seleksi melalui laman resmi. Jika diterima, lakukan daftar ulang secara daring dan cetak bukti pendaftaran.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PENGUMUMAN -->
+<section id="pengumuman" style="background: var(--light-bg);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Informasi Terkini</div>
+      <h2>Pengumuman & Berita</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-main">
+        <div class="news-header">
+          <h3>📢 Pengumuman Resmi</h3>
+          <a href="#">Lihat Semua →</a>
+        </div>
+        <div class="news-item">
+          <div class="news-date"><div class="d">24</div><div class="m">MEI</div></div>
+          <div>
+            <div class="news-title">Pendaftaran SPMB Jenjang SMA/SMK Tahun Ajaran 2025/2026 Resmi Dibuka</div>
+            <div class="news-meta"><span class="news-type type-penting">Penting</span>Dinas Pendidikan DKI Jakarta</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date"><div class="d">20</div><div class="m">MEI</div></div>
+          <div>
+            <div class="news-title">Jadwal Lengkap dan Kuota Penerimaan Setiap Jalur SPMB 2025</div>
+            <div class="news-meta"><span class="news-type type-info">Informasi</span>Dinas Pendidikan DKI Jakarta</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date"><div class="d">15</div><div class="m">MEI</div></div>
+          <div>
+            <div class="news-title">Penjelasan Teknis Jalur Domisili: Cara Hitung Jarak Domisili ke Sekolah</div>
+            <div class="news-meta"><span class="news-type type-info">Informasi</span>Dinas Pendidikan DKI Jakarta</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date"><div class="d">10</div><div class="m">MEI</div></div>
+          <div>
+            <div class="news-title">SPMB Bersama: Program Masuk Sekolah Swasta Gratis dengan Biaya Ditanggung Pemprov</div>
+            <div class="news-meta"><span class="news-type type-info">Informasi</span>Dinas Pendidikan DKI Jakarta</div>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-date"><div class="d">05</div><div class="m">MEI</div></div>
+          <div>
+            <div class="news-title">Perubahan Istilah PPDB Menjadi SPMB: Apa yang Berubah?</div>
+            <div class="news-meta"><span class="news-type type-penting">Penting</span>Dinas Pendidikan DKI Jakarta</div>
+          </div>
+        </div>
+      </div>
+      <div class="news-sidebar">
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">⚡ Akses Cepat</div>
+          <div class="sidebar-card-body">
+            <a href="#" class="quick-link">
+              <div class="icon" style="background: rgba(0,53,128,0.1); color: var(--jakarta-blue);">📋</div>
+              Cek Status Pendaftaran
+            </a>
+            <a href="#" class="quick-link">
+              <div class="icon" style="background: rgba(0,137,123,0.1); color: var(--accent-teal);">📄</div>
+              Download Formulir
+            </a>
+            <a href="#" class="quick-link">
+              <div class="icon" style="background: rgba(245,166,35,0.15); color: #B7850A;">🗺️</div>
+              Peta Sekolah Negeri
+            </a>
+            <a href="#" class="quick-link">
+              <div class="icon" style="background: rgba(200,16,46,0.08); color: var(--jakarta-red);">📊</div>
+              Hasil Seleksi
+            </a>
+            <a href="#" class="quick-link">
+              <div class="icon" style="background: rgba(0,53,128,0.1); color: var(--jakarta-blue);">📞</div>
+              Kontak Helpdesk
+            </a>
+          </div>
+        </div>
+        <div class="sidebar-card">
+          <div class="sidebar-card-header">📞 Hotline & Bantuan</div>
+          <div class="sidebar-card-body">
+            <div style="font-size: 24px; font-weight: 800; color: var(--jakarta-blue); margin-bottom: 4px;">1500-164</div>
+            <div style="font-size: 13px; color: var(--text-light); margin-bottom: 16px;">Senin – Jumat, 08.00 – 16.00 WIB</div>
+            <div style="font-size: 13px; color: var(--text-mid); margin-bottom: 8px;">📧 spmb@jakarta.go.id</div>
+            <div style="font-size: 13px; color: var(--text-mid);">🌐 spmb.jakarta.go.id</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag">Tanya Jawab</div>
+      <h2>Pertanyaan yang Sering Diajukan</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Apa perbedaan SPMB dan PPDB yang lama?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">SPMB (Sistem Penerimaan Murid Baru) adalah nama baru yang menggantikan PPDB mulai tahun 2025. Perubahannya mencakup istilah "peserta didik" menjadi "murid", sistem zonasi menjadi jalur domisili, dan beberapa penyesuaian dalam mekanisme seleksi.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Apa itu Sidanira dan untuk apa?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">Sidanira adalah sistem pra-pendaftaran online khusus untuk jalur tertentu di SPMB Jakarta. Di sini Anda melakukan verifikasi dokumen sebelum bisa membuat akun di portal SPMB utama.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Apakah pendaftaran SPMB berbayar?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">Tidak. Pendaftaran SPMB sepenuhnya GRATIS tanpa pungutan apapun. Jika ada yang meminta biaya dengan mengatasnamakan SPMB, segera laporkan ke hotline 1500-164.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Berapa sekolah yang bisa dipilih?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">Calon murid dapat memilih maksimal 3 sekolah pilihan sesuai jenjang dan jalur yang dipilih. Urutan pilihan menentukan prioritas jika lolos di lebih dari satu sekolah.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Bagaimana cara mengecek hasil seleksi?
+          <div class="faq-toggle">+</div>
+        </div>
+        <div class="faq-answer">Hasil seleksi dapat dicek melalui laman resmi spmb.jakarta.go.id dengan login menggunakan akun yang sudah dibuat. Pengumuman akan diterbitkan sesuai jadwal yang telah ditetapkan.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Siap Mendaftar SPMB 2025?</h2>
+  <p>Daftar sekarang dan pastikan anak Anda mendapatkan pendidikan terbaik di Jakarta. Gratis, transparan, dan tanpa diskriminasi.</p>
+  <div class="cta-buttons">
+    <a href="#" class="btn-primary" style="font-size: 16px; padding: 16px 36px;">📝 Daftar Sekarang</a>
+    <a href="#" class="btn-outline-white" style="font-size: 16px; padding: 14px 34px;">📖 Panduan Lengkap</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>🏛️ SPMB Jakarta</h3>
+        <p>Sistem Penerimaan Murid Baru Provinsi DKI Jakarta. Layanan pendidikan berkualitas, gratis, transparan, dan anti-suap.</p>
+        <div class="dinas-logos">
+          <div class="dinas-logo-item">Dinas Pendidikan DKI</div>
+          <div class="dinas-logo-item">Jakarta Smart City</div>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Layanan</h4>
+        <a href="#">Portal SPMB</a>
+        <a href="#">Sidanira</a>
+        <a href="#">Cek Status</a>
+        <a href="#">Hasil Seleksi</a>
+        <a href="#">Daftar Ulang</a>
+      </div>
+      <div class="footer-links">
+        <h4>Informasi</h4>
+        <a href="#">Jadwal Lengkap</a>
+        <a href="#">Jalur Masuk</a>
+        <a href="#">Persyaratan</a>
+        <a href="#">FAQ</a>
+        <a href="#">Panduan Video</a>
+      </div>
+      <div class="footer-links">
+        <h4>Kontak</h4>
+        <a href="#">Hotline: 1500-164</a>
+        <a href="#">spmb@jakarta.go.id</a>
+        <a href="#">Dinas Pendidikan DKI</a>
+        <a href="#">Lapor Jakarta</a>
+        <a href="#">Pengaduan Online</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Pemerintah Provinsi DKI Jakarta — Dinas Pendidikan</span>
+      <span>Kebijakan Privasi · Syarat & Ketentuan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Countdown Timer
+  function updateCountdown() {
+    const deadline = new Date('2025-06-12T16:00:00+07:00');
+    const now = new Date();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      document.getElementById('cd-d').textContent = '00';
+      document.getElementById('cd-h').textContent = '00';
+      document.getElementById('cd-m').textContent = '00';
+      document.getElementById('cd-s').textContent = '00';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // Tab switching
+  function switchTab(btn, id) {
+    document.querySelectorAll('.jenjang-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.jenjang-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  // FAQ
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const isOpen = el.classList.contains('open');
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      el.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // Smooth scroll nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+</body>
+</html>
